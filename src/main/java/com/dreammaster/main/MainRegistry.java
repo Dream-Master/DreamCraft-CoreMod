@@ -43,6 +43,7 @@ import com.dreammaster.command.CustomFuelsCommand;
 import com.dreammaster.command.CustomToolTipsCommand;
 import com.dreammaster.command.HazardousItemsCommand;
 import com.dreammaster.command.ItemInHandInfoCommand;
+import com.dreammaster.command.WikiCommand;
 import com.dreammaster.config.CoreModConfig;
 import com.dreammaster.creativetab.ModTabList;
 import com.dreammaster.detrav.ScannerTools;
@@ -572,5 +573,6 @@ public class MainRegistry {
         if (YAMCore.isDebug()) {
             pEvent.registerServerCommand(new AllPurposeDebugCommand());
         }
+        pEvent.registerServerCommand(new WikiCommand());
     }
 }
