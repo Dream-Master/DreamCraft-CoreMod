@@ -642,6 +642,11 @@ item.HarmonicFramePart.name=Stargate Frame Part of Harmonic Breakthrough
 item.StargateDustAncients.name=Stargate-Crystal Dust of the Ancients
 item.StargateCrystalAncients.name=Stargate Core Crystal of the Ancients
 item.warptheory.portableshower.name=Portable Shower
+item.SolarLightSplitter.name=Solar Light Splitter
+item.EnderQuantumComponent.name=Ender-Quantum Component
+item.BlueSpectralComponent.name=Blue Spectral Component
+item.GreenSpectralComponent.name=Green Spectral Component
+item.RedSpectralComponent.name=Red Spectral Component
 
 tc.aspect.custom1=Equality, Balance, Uniformity
 tc.aspect.custom2=Insanity, Madness, Craziness

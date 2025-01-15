@@ -4,6 +4,7 @@ import static gregtech.api.enums.Mods.AdvancedSolarPanel;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Mods.Minecraft;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
+import static gregtech.api.recipe.RecipeMaps.laserEngraverRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.MINUTES;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
@@ -11,11 +12,14 @@ import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import java.util.Arrays;
 import java.util.List;
 
+import com.dreammaster.item.NHItemList;
+
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.util.GTUtility;
 
 public class ScriptAdvancedSolarPanel implements IScriptLoader {
 
@@ -121,6 +125,38 @@ public class ScriptAdvancedSolarPanel implements IScriptLoader {
                 "craftingToolWrench",
                 "craftingToolHardHammer",
                 "craftingToolFile");
+        addShapedRecipe(
+                ItemList.Cover_SolarPanel_IV.get(1L),
+                "craftingToolCrowbar",
+                ItemList.Machine_IV_SolarPanel.get(1),
+                "craftingToolScrewdriver",
+                "craftingToolWrench",
+                "craftingToolHardHammer",
+                "craftingToolFile");
+        addShapedRecipe(
+                ItemList.Cover_SolarPanel_LuV.get(1L),
+                "craftingToolCrowbar",
+                ItemList.Machine_LuV_SolarPanel.get(1),
+                "craftingToolScrewdriver",
+                "craftingToolWrench",
+                "craftingToolHardHammer",
+                "craftingToolFile");
+        addShapedRecipe(
+                ItemList.Cover_SolarPanel_ZPM.get(1L),
+                "craftingToolCrowbar",
+                ItemList.Machine_ZPM_SolarPanel.get(1),
+                "craftingToolScrewdriver",
+                "craftingToolWrench",
+                "craftingToolHardHammer",
+                "craftingToolFile");
+        addShapedRecipe(
+                ItemList.Cover_SolarPanel_UV.get(1L),
+                "craftingToolCrowbar",
+                ItemList.Machine_UV_SolarPanel.get(1),
+                "craftingToolScrewdriver",
+                "craftingToolWrench",
+                "craftingToolHardHammer",
+                "craftingToolFile");
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
@@ -146,6 +182,114 @@ public class ScriptAdvancedSolarPanel implements IScriptLoader {
                         getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 8, 3, missing))
                 .itemOutputs(getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 4, missing))
                 .duration(1 * MINUTES + 20 * SECONDS).eut(122880).addTo(assemblerRecipes);
+
+        addShapedRecipe(
+                NHItemList.SolarLightSplitter.getIS(),
+                NHItemList.RedSpectralComponent.getIS(),
+                NHItemList.GreenSpectralComponent.getIS(),
+                NHItemList.BlueSpectralComponent.getIS(),
+                NHItemList.RedSpectralComponent.getIS(),
+                NHItemList.GreenSpectralComponent.getIS(),
+                NHItemList.BlueSpectralComponent.getIS(),
+                NHItemList.RedSpectralComponent.getIS(),
+                NHItemList.GreenSpectralComponent.getIS(),
+                NHItemList.BlueSpectralComponent.getIS());
+        addShapedRecipe(
+                NHItemList.EnderQuantumComponent.getIS(),
+                getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 3, missing),
+                "plateElectrumFlux",
+                getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 3, missing),
+                "plateElectrumFlux",
+                "plateDenseInfinityCatalyst",
+                "plateElectrumFlux",
+                getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 3, missing),
+                "plateElectrumFlux",
+                getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 3, missing));
+
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.Emerald, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.GreenSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.GreenSapphire, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.GreenSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.Olivine, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.GreenSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.InfusedEarth, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.GreenSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.Sapphire, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.BlueSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.Opal, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.BlueSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.BlueTopaz, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.BlueSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.InfusedWater, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.BlueSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.Firestone, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.RedSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.Jasper, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.RedSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.FoolsRuby, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.RedSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.Ruby, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.RedSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.GarnetRed, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.RedSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTUtility.copyAmount(0, GTOreDictUnificator.get(OrePrefixes.lens, Materials.InfusedFire, 1L)),
+                        getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 5, missing))
+                .itemOutputs(NHItemList.RedSpectralComponent.getIS()).duration(50 * SECONDS).eut(7680)
+                .addTo(laserEngraverRecipes);
 
     }
 }

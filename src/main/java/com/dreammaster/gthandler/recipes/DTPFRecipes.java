@@ -13,6 +13,7 @@ import net.minecraftforge.fluids.FluidStack;
 import com.dreammaster.block.BlockList;
 import com.dreammaster.gthandler.CustomItemList;
 import com.dreammaster.gthandler.DTPFCalculator;
+import com.dreammaster.item.NHItemList;
 
 import goodgenerator.items.GGMaterial;
 import goodgenerator.util.ItemRefer;
@@ -482,7 +483,7 @@ public class DTPFRecipes implements Runnable {
                                 GTOreDictUnificator.get(OrePrefixes.stick, MaterialsUEVplus.TranscendentMetal, 8L),
                                 MaterialsAlloy.BOTMIUM.getPlate(24),
                                 MaterialsAlloy.ARCANITE.getScrew(16),
-                                GTModHandler.getModItem(SuperSolarPanels.ID, "enderquantumcomponent", 1L))
+                                NHItemList.EnderQuantumComponent.getIS())
                         .itemOutputs(ItemList.Tesseract.get(8)).fluidInputs(MaterialsUEVplus.ExcitedDTEC.getFluid(1000))
                         .fluidOutputs(MaterialsUEVplus.DimensionallyTranscendentResidue.getFluid(1000))
                         .duration(40 * SECONDS).eut(128_000_000).metadata(COIL_HEAT, eternal_heat)

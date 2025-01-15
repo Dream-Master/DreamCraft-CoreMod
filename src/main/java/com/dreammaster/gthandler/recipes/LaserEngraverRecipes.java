@@ -2,7 +2,6 @@ package com.dreammaster.gthandler.recipes;
 
 import static gregtech.api.enums.Mods.GalacticraftCore;
 import static gregtech.api.enums.Mods.OpenComputers;
-import static gregtech.api.enums.Mods.SuperSolarPanels;
 import static gregtech.api.recipe.RecipeMaps.laserEngraverRecipes;
 import static gregtech.api.util.GTRecipeBuilder.MINUTES;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
@@ -177,18 +176,15 @@ public class LaserEngraverRecipes implements Runnable {
         Fluid oganesson = FluidRegistry.getFluid("oganesson") != null ? FluidRegistry.getFluid("oganesson")
                 : FluidRegistry.getFluid("radon");
 
-        if (SuperSolarPanels.isModLoaded()) {
-            // Photonically Enhanced Wafer
-            GTValues.RA.stdBuilder().itemInputs(
-                    ItemList.Circuit_Silicon_Wafer6.get(1L), // Photonically Prepared Wafer
-                    Materials.Glowstone.getNanite(1),
-                    GTModHandler.getModItem(SuperSolarPanels.ID, "solarsplitter", 0L, 0) // Solar Light Splitter
-            ).itemOutputs(ItemList.Circuit_Silicon_Wafer7.get(1L))
-                    .fluidInputs(Materials.Tin.getPlasma(1000L), new FluidStack(oganesson, 4000))
-                    .fluidOutputs(Materials.Tin.getMolten(1000L)).duration(10 * SECONDS).eut(7_864_320)
-                    .requiresCleanRoom().addTo(laserEngraverRecipes);
-
-        }
+        // Photonically Enhanced Wafer
+        GTValues.RA.stdBuilder().itemInputs(
+                ItemList.Circuit_Silicon_Wafer6.get(1L), // Photonically Prepared Wafer
+                Materials.Glowstone.getNanite(1),
+                NHItemList.SolarLightSplitter.getIS(0) // Solar Light Splitter
+        ).itemOutputs(ItemList.Circuit_Silicon_Wafer7.get(1L))
+                .fluidInputs(Materials.Tin.getPlasma(1000L), new FluidStack(oganesson, 4000))
+                .fluidOutputs(Materials.Tin.getMolten(1000L)).duration(10 * SECONDS).eut(7_864_320).requiresCleanRoom()
+                .addTo(laserEngraverRecipes);
 
         GTValues.RA.stdBuilder()
                 .itemInputs(

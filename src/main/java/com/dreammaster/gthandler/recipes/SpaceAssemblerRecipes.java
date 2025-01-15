@@ -8,7 +8,6 @@ import static gregtech.api.enums.Mods.EternalSingularity;
 import static gregtech.api.enums.Mods.GTNHIntergalactic;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Mods.OpenComputers;
-import static gregtech.api.enums.Mods.SuperSolarPanels;
 import static gregtech.api.enums.Mods.Thaumcraft;
 import static gregtech.api.enums.Mods.ThaumicEnergistics;
 import static gregtech.api.util.GTModHandler.getModItem;
@@ -23,6 +22,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import com.dreammaster.item.NHItemList;
 import com.gtnewhorizons.gtnhintergalactic.recipe.IGRecipeMaps;
 
 import goodgenerator.items.GGMaterial;
@@ -249,7 +249,7 @@ public class SpaceAssemblerRecipes implements Runnable {
                     .itemOutputs(ItemList.ZPM2.get(1)).metadata(IGRecipeMaps.MODULE_TIER, 2).duration(50 * SECONDS)
                     .eut(TierEU.RECIPE_UEV).addTo(IGRecipeMaps.spaceAssemblerRecipes);
 
-            if (OpenComputers.isModLoaded() && SuperSolarPanels.isModLoaded()) {
+            if (OpenComputers.isModLoaded()) {
                 // Optically Compatible Memory
                 GTValues.RA.stdBuilder().itemInputs(
                         getModItem(OpenComputers.ID, "item", 1L, 39), // Memory tier 3.5
@@ -257,8 +257,7 @@ public class SpaceAssemblerRecipes implements Runnable {
                         CustomItemList.DATApipe.get(4L),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.SuperconductorUEV, 4L),
                         GTOreDictUnificator.get(OrePrefixes.screw, Materials.Infinity, 8L),
-                        getModItem(SuperSolarPanels.ID, "solarsplitter", 1L, 0)) // Solar Light Splitter
-                        .fluidInputs(new FluidStack(solderUEV, 288))
+                        NHItemList.SolarLightSplitter.getIS()).fluidInputs(new FluidStack(solderUEV, 288))
                         .itemOutputs(ItemList.Optically_Compatible_Memory.get(2)).metadata(IGRecipeMaps.MODULE_TIER, 1)
                         .duration(20 * SECONDS).eut(TierEU.RECIPE_UHV).addTo(IGRecipeMaps.spaceAssemblerRecipes);
 
@@ -268,8 +267,7 @@ public class SpaceAssemblerRecipes implements Runnable {
                         CustomItemList.DATApipe.get(16L),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.SuperconductorUIV, 4L),
                         GTOreDictUnificator.get(OrePrefixes.screw, Materials.Infinity, 16L),
-                        getModItem(SuperSolarPanels.ID, "solarsplitter", 4L, 0)) // Solar Light Splitter
-                        .fluidInputs(new FluidStack(solderUEV, 576))
+                        NHItemList.SolarLightSplitter.getIS(4)).fluidInputs(new FluidStack(solderUEV, 576))
                         .itemOutputs(ItemList.Optically_Compatible_Memory.get(8)).metadata(IGRecipeMaps.MODULE_TIER, 2)
                         .duration(20 * SECONDS).eut(TierEU.RECIPE_UEV).addTo(IGRecipeMaps.spaceAssemblerRecipes);
 
@@ -279,8 +277,7 @@ public class SpaceAssemblerRecipes implements Runnable {
                         CustomItemList.DATApipe.get(64L),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.SuperconductorUMV, 4L),
                         GTOreDictUnificator.get(OrePrefixes.screw, Materials.Infinity, 32L),
-                        getModItem(SuperSolarPanels.ID, "solarsplitter", 16L, 0)) // Solar Light Splitter
-                        .fluidInputs(new FluidStack(solderUEV, 1152))
+                        NHItemList.SolarLightSplitter.getIS(16)).fluidInputs(new FluidStack(solderUEV, 1152))
                         .itemOutputs(ItemList.Optically_Compatible_Memory.get(32)).metadata(IGRecipeMaps.MODULE_TIER, 2)
                         .duration(20 * SECONDS).eut(TierEU.RECIPE_UIV).addTo(IGRecipeMaps.spaceAssemblerRecipes);
             }

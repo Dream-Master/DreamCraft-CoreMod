@@ -1152,20 +1152,18 @@ public class AssemblerRecipes implements Runnable {
                     .itemOutputs(GTModHandler.getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 1, 2))
                     .duration(30 * SECONDS).eut(TierEU.RECIPE_EV).addTo(assemblerRecipes);
         }
+
         // Solar Light Splitter
-        if (SuperSolarPanels.isModLoaded()) {
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        NHItemList.BlueSpectralComponent.getIS(3),
+                        NHItemList.RedSpectralComponent.getIS(3),
+                        NHItemList.GreenSpectralComponent.getIS(3),
+                        GTUtility.getIntegratedCircuit(1))
+                .itemOutputs(NHItemList.SolarLightSplitter.getIS()).duration(5 * SECONDS).eut(TierEU.RECIPE_HV)
+                .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                    .itemInputs(
-                            GTModHandler.getModItem(SuperSolarPanels.ID, "bluecomponent", 3L, 0),
-                            GTModHandler.getModItem(SuperSolarPanels.ID, "redcomponent", 3L, 0),
-                            GTModHandler.getModItem(SuperSolarPanels.ID, "greencomponent", 3L, 0),
-                            GTUtility.getIntegratedCircuit(1))
-                    .itemOutputs(GTModHandler.getModItem(SuperSolarPanels.ID, "solarsplitter", 1L, 0))
-                    .duration(5 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
-        }
         // Heat Exchangers
-
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         GTUtility.getIntegratedCircuit(21),
@@ -2309,15 +2307,14 @@ public class AssemblerRecipes implements Runnable {
                 .duration(5 * SECONDS).eut(TierEU.RECIPE_LV).addTo(assemblerRecipes);
 
         // Ender-Quantum Component
-        if (SuperSolarPanels.isModLoaded() && (AdvancedSolarPanel.isModLoaded())) {
+        if (AdvancedSolarPanel.isModLoaded()) {
             GTValues.RA.stdBuilder()
                     .itemInputs(
                             GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.InfinityCatalyst, 1),
                             GTModHandler.getModItem(AdvancedSolarPanel.ID, "asp_crafting_items", 4, 3),
                             Materials.ElectrumFlux.getPlates(4))
-                    .itemOutputs(GTModHandler.getModItem(SuperSolarPanels.ID, "enderquantumcomponent", 1, 0))
-                    .duration(10 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
-
+                    .itemOutputs(NHItemList.EnderQuantumComponent.getIS()).duration(10 * SECONDS).eut(TierEU.RECIPE_HV)
+                    .addTo(assemblerRecipes);
         }
 
         // 16A Zpm to LuV transformer
