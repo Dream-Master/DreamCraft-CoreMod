@@ -796,6 +796,14 @@ public class GT_CraftingRecipeLoader extends gregtech.loaders.postload.CraftingR
                 new Object[] { "TCT", "PMP", "TCT", 'M', ItemList.Machine_HV_Brewery, 'P', ItemList.Electric_Pump_HV,
                         'T', OrePrefixes.plate.get(Materials.WoodSealed), 'C', OrePrefixes.circuit.get(Materials.EV) });
 
+        // Solar Factory
+        GTModHandler.addCraftingRecipe(
+                ItemList.SolarFactory.get(1),
+                bits,
+                new Object[] { "TTT", "PMP", "CTC", 'M', ItemList.Machine_HV_Assembler, 'P',
+                        ItemList.Cover_SolarPanel_8V, 'T', OrePrefixes.plate.get(Materials.StainlessSteel), 'C',
+                        OrePrefixes.circuit.get(Materials.EV) });
+
         // Reinforced Wooden Casing
         GTModHandler.addCraftingRecipe(
                 ItemList.Casing_Reinforced_Wood.get(1),

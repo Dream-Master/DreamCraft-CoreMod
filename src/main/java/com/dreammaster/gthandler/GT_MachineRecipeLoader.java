@@ -36,6 +36,7 @@ import com.dreammaster.gthandler.recipes.NeutroniumCompressorRecipes;
 import com.dreammaster.gthandler.recipes.PolarizerRecipes;
 import com.dreammaster.gthandler.recipes.RecipeRemoval;
 import com.dreammaster.gthandler.recipes.SifterRecipes;
+import com.dreammaster.gthandler.recipes.SolarFactoryRecipes;
 import com.dreammaster.gthandler.recipes.SpaceAssemblerRecipes;
 import com.dreammaster.gthandler.recipes.VacuumFreezerRecipes;
 import com.dreammaster.gthandler.recipes.VacuumFurnaceRecipes;
@@ -80,6 +81,7 @@ public class GT_MachineRecipeLoader implements Runnable {
         new MixerRecipes().run();
         new NeutroniumCompressorRecipes().run();
         new SifterRecipes().run();
+        new SolarFactoryRecipes().run();
         new VacuumFreezerRecipes().run();
         new WiremillRecipes().run();
         new CrackingRecipes().run();
