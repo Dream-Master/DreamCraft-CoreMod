@@ -13,7 +13,6 @@ import com.dreammaster.coremod.transformers.ItemFocusWardingTransformer;
 import com.dreammaster.coremod.transformers.recipenukers.AdvancedSolarPanelTransformer;
 import com.dreammaster.coremod.transformers.recipenukers.BibliocraftTransformer;
 import com.dreammaster.coremod.transformers.recipenukers.GraviSuiteTransformer;
-import com.dreammaster.coremod.transformers.recipenukers.TravellersGearTransformer;
 
 public class DreamClassTransformer implements IClassTransformer {
 
@@ -27,7 +26,6 @@ public class DreamClassTransformer implements IClassTransformer {
         registerTransformer(new BibliocraftTransformer());
         registerTransformer(new GraviSuiteTransformer());
         registerTransformer(new ItemFocusWardingTransformer());
-        registerTransformer(new TravellersGearTransformer());
     }
 
     private void registerTransformer(IDreamTransformer transformer) {
