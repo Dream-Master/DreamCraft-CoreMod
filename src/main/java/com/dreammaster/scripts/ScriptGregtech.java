@@ -16,7 +16,6 @@ import static gregtech.api.enums.Mods.ProjectRedExpansion;
 import static gregtech.api.enums.Mods.ProjectRedTransmission;
 import static gregtech.api.enums.Mods.SGCraft;
 import static gregtech.api.enums.Mods.StructureLib;
-import static gregtech.api.enums.Mods.SuperSolarPanels;
 import static gregtech.api.enums.Mods.Thaumcraft;
 import static gregtech.api.enums.Mods.ThaumicBases;
 import static gregtech.api.enums.Mods.TinkerConstruct;
@@ -80,7 +79,6 @@ public class ScriptGregtech implements IScriptLoader {
                 OpenBlocks.ID,
                 PamsHarvestCraft.ID,
                 SGCraft.ID,
-                SuperSolarPanels.ID,
                 Thaumcraft.ID,
                 ThaumicBases.ID,
                 TinkerConstruct.ID);
@@ -755,7 +753,7 @@ public class ScriptGregtech implements IScriptLoader {
                 'h',
                 GTOreDictUnificator.get(OrePrefixes.plateTriple, Materials.Polybenzimidazole, 1L),
                 'i',
-                getModItem(SuperSolarPanels.ID, "solarsplitter", 1, 0, missing),
+                NHItemList.SolarLightSplitter.getIS(),
                 'j',
                 "circuitSuperconductor",
                 'k',

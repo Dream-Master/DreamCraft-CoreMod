@@ -449,6 +449,11 @@ public class GT_Loader_Items {
         CustomItemList.FramePartHarmonic.set(NHItemList.FramePartHarmonic.getIS());
         CustomItemList.StargateDustAncients.set(NHItemList.StargateDustAncients.getIS());
         CustomItemList.StargateCrystalAncients.set(NHItemList.StargateCrystalAncients.getIS());
+        CustomItemList.SolarLightSplitter.set(NHItemList.SolarLightSplitter.getIS());
+        CustomItemList.EnderQuantumComponent.set(NHItemList.EnderQuantumComponent.getIS());
+        CustomItemList.BlueSpectralComponent.set(NHItemList.BlueSpectralComponent.getIS());
+        CustomItemList.GreenSpectralComponent.set(NHItemList.GreenSpectralComponent.getIS());
+        CustomItemList.RedSpectralComponent.set(NHItemList.RedSpectralComponent.getIS());
     }
 
     private void registerTooltips() {

@@ -407,7 +407,14 @@ public enum CustomItemList implements IItemContainer {
     ChevronHarmonic,
     FramePartHarmonic,
     StargateDustAncients,
-    StargateCrystalAncients;
+    StargateCrystalAncients,
+    SolarLightSplitter,
+    EnderQuantumComponent,
+    BlueSpectralComponent,
+    GreenSpectralComponent,
+    RedSpectralComponent,
+
+    ;
 
     private ItemStack mStack;
     private boolean mHasNotBeenSet = true;

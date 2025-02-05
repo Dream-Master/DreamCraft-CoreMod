@@ -576,6 +576,11 @@ public enum NHItemList {
     FramePartHarmonic(new ModSimpleBaseItem("HarmonicFramePart", ModTabList.ModSpaceTab)),
     StargateDustAncients(new ModSimpleBaseItem("StargateDustAncients", ModTabList.ModSpaceTab)),
     StargateCrystalAncients(new ModSimpleBaseItem("StargateCrystalAncients", ModTabList.ModSpaceTab)),
+    SolarLightSplitter(new ModSimpleBaseItem("SolarLightSplitter", ModTabList.ModSolarTab)),
+    EnderQuantumComponent(new ModSimpleBaseItem("EnderQuantumComponent", ModTabList.ModSolarTab)),
+    BlueSpectralComponent(new ModSimpleBaseItem("BlueSpectralComponent", ModTabList.ModSolarTab)),
+    GreenSpectralComponent(new ModSimpleBaseItem("GreenSpectralComponent", ModTabList.ModSolarTab)),
+    RedSpectralComponent(new ModSimpleBaseItem("RedSpectralComponent", ModTabList.ModSolarTab)),
 
     // Do not delete this
     EndOfList(null);
