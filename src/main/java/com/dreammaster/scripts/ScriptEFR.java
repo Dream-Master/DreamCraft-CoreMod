@@ -2,27 +2,38 @@ package com.dreammaster.scripts;
 
 import static gregtech.api.enums.Mods.AdventureBackpack;
 import static gregtech.api.enums.Mods.AppliedEnergistics2;
+import static gregtech.api.enums.Mods.BiomesOPlenty;
+import static gregtech.api.enums.Mods.Botania;
 import static gregtech.api.enums.Mods.DraconicEvolution;
+import static gregtech.api.enums.Mods.EnderIO;
 import static gregtech.api.enums.Mods.EtFuturumRequiem;
 import static gregtech.api.enums.Mods.ExtraUtilities;
 import static gregtech.api.enums.Mods.HardcoreEnderExpansion;
 import static gregtech.api.enums.Mods.Minecraft;
 import static gregtech.api.enums.Mods.PamsHarvestCraft;
+import static gregtech.api.enums.Mods.StevesCarts2;
 import static gregtech.api.enums.Mods.Thaumcraft;
+import static gregtech.api.enums.Mods.ThaumicBases;
 import static gregtech.api.enums.Mods.TinkerConstruct;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.compressorRecipes;
 import static gregtech.api.recipe.RecipeMaps.fluidExtractionRecipes;
+import static gregtech.api.recipe.RecipeMaps.hammerRecipes;
+import static gregtech.api.recipe.RecipeMaps.mixerRecipes;
+import static gregtech.api.recipe.RecipeMaps.multiblockChemicalReactorRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.dreammaster.recipes.CustomItem;
+import com.dreammaster.thaumcraft.TCHelper;
 
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
@@ -31,6 +42,12 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.util.GTUtility;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchItem;
+import thaumcraft.api.research.ResearchPage;
 
 public class ScriptEFR implements IScriptLoader {
 
@@ -173,5 +190,106 @@ public class ScriptEFR implements IScriptLoader {
                 .itemOutputs(getModItem(Minecraft.ID, "magma_cream", 4, 0, missing))
                 .fluidOutputs(new FluidStack(FluidRegistry.getFluid("lava"), 1000)).duration(10 * SECONDS).eut(48)
                 .addTo(fluidExtractionRecipes);
+
+        GTValues.RA.stdBuilder().itemInputs(getModItem(BiomesOPlenty.ID, "hardIce", 4, 0, missing))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "blue_ice", 1, 0, missing)).duration(8 * SECONDS).eut(2)
+                .addTo(compressorRecipes);
+
+        GTValues.RA.stdBuilder().itemInputs(getModItem(Minecraft.ID, "nether_wart", 9L))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "nether_wart", 1L)).duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV).addTo(assemblerRecipes);
+
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        getModItem(Minecraft.ID, "gravel", 4L),
+                        getModItem(TinkerConstruct.ID, "CraftedSoil", 4L, 1))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "old_gravel", 8L)).duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV).addTo(assemblerRecipes);
+
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        getModItem(EtFuturumRequiem.ID, "old_gravel", 4L),
+                        getModItem(BiomesOPlenty.ID, "driedDirt", 4L))
+                .fluidInputs(new FluidStack(FluidRegistry.getFluid("steam"), 400))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "coarse_dirt", 8, 0, missing)).duration(8 * SECONDS).eut(2)
+                .addTo(mixerRecipes);
+
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        getModItem(TinkerConstruct.ID, "slime.gel", 4L, 1),
+                        getModItem(TinkerConstruct.ID, "GlueBlock", 4L, 0),
+                        getModItem(TinkerConstruct.ID, "materials", 1L, 1))
+                .fluidInputs(new FluidStack(FluidRegistry.getFluid("steam"), 4000))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "slime", 16, 0, missing)).duration(40 * SECONDS).eut(2)
+                .addTo(mixerRecipes);
+
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        getModItem(HardcoreEnderExpansion.ID, "laboratory_obsidian", 16L),
+                        getModItem(HardcoreEnderExpansion.ID, "spectral_tear", 1L, 0))
+                .fluidInputs(new FluidStack(FluidRegistry.getFluid("ic2distilledwater"), 4000))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "crying_obsidian", 16L)).duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV).addTo(assemblerRecipes);
+
+        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Calcite, 9L))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "calcite", 1, 0, missing)).duration(8 * SECONDS).eut(2)
+                .addTo(compressorRecipes);
+
+        GTValues.RA.stdBuilder().itemInputs(getModItem(EtFuturumRequiem.ID, "calcite", 1, 0, missing))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Calcite, 9L)).duration(8 * SECONDS)
+                .eut(2).addTo(hammerRecipes);
+
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTOreDictUnificator.get(OrePrefixes.dust, Materials.MelodicAlloy, 8L),
+                        getModItem(Botania.ID, "fertilizer", 3, 0, missing),
+                        getModItem(ThaumicBases.ID, "genLeaves", 1, 3, missing),
+                        GTUtility.getIntegratedCircuit(24))
+                .itemOutputs(getModItem(EtFuturumRequiem.ID, "chorus_flower", 1, 0, missing))
+                .fluidInputs(
+                        new FluidStack(FluidRegistry.getFluid("endergoo"), 4000),
+                        new FluidStack(FluidRegistry.getFluid("ender"), 1000))
+                .duration(30 * SECONDS).eut(TierEU.RECIPE_HV).addTo(multiblockChemicalReactorRecipes);
+
+        new ResearchItem(
+                "UNDYINGTOTEM",
+                "NEWHORIZONS",
+                new AspectList().add(Aspect.getAspect("infernus"), 15).add(Aspect.getAspect("lucrum"), 12)
+                        .add(Aspect.getAspect("praecantatio"), 12).add(Aspect.getAspect("spiritus"), 9)
+                        .add(Aspect.getAspect("fames"), 6).add(Aspect.getAspect("corpus"), 3),
+                -6,
+                -7,
+                3,
+                getModItem(EtFuturumRequiem.ID, "totem_of_undying", 1, 0, missing)).setParents("GREENHEART")
+                        .setConcealed().setRound().setPages(new ResearchPage("TConstruct.research_page.UNDYINGTOTEM.1"))
+                        .registerResearchItem();
+        ThaumcraftApi.addInfusionCraftingRecipe(
+                "UNDYINGTOTEM",
+                getModItem(EtFuturumRequiem.ID, "totem_of_undying", 1, 0, missing),
+                15,
+                new AspectList().add(Aspect.getAspect("exanimis"), 100).add(Aspect.getAspect("ignis"), 150)
+                        .add(Aspect.getAspect("lucrum"), 150).add(Aspect.getAspect("sano"), 200)
+                        .add(Aspect.getAspect("praecantatio"), 200),
+                getModItem(TinkerConstruct.ID, "heartCanister", 1, 5, missing),
+                new ItemStack[] { GTOreDictUnificator.get(OrePrefixes.plate, Materials.InfusedGold, 1L),
+                        GTOreDictUnificator.get(OrePrefixes.gemExquisite, Materials.Emerald, 1L),
+                        getModItem(ThaumicBases.ID, "oldGold", 1, 0, missing),
+                        getModItem(StevesCarts2.ID, "BlockMetalStorage", 1, 2, missing),
+                        getModItem(ThaumicBases.ID, "oldGold", 1, 0, missing),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.InfusedGold, 1L),
+                        getModItem(EnderIO.ID, "itemFrankenSkull", 1, 5, missing),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.InfusedGold, 1L),
+                        getModItem(ThaumicBases.ID, "oldGold", 1, 0, missing),
+                        getModItem(StevesCarts2.ID, "BlockMetalStorage", 1, 2, missing),
+                        getModItem(ThaumicBases.ID, "oldGold", 1, 0, missing),
+                        GTOreDictUnificator.get(OrePrefixes.gemExquisite, Materials.GreenSapphire, 1L), });
+        TCHelper.addResearchPage(
+                "UNDYINGTOTEM",
+                new ResearchPage(
+                        Objects.requireNonNull(
+                                TCHelper.findInfusionRecipe(
+                                        getModItem(EtFuturumRequiem.ID, "totem_of_undying", 1, 0, missing)))));
+        ThaumcraftApi.addWarpToResearch("UNDYINGTOTEM", 3);
+
     }
 }

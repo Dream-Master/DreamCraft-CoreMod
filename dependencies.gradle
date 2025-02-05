@@ -25,6 +25,7 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.3.4-GTNH:dev") { transitive = false }
     compileOnly("com.github.GTNewHorizons:ForestryMC:4.10.1:dev") { transitive = false }
     compileOnlyApi("com.github.GTNewHorizons:Mobs-Info:0.5.0-GTNH:dev")
+    //compileOnly("com.github.Roadhog360:Et-Futurum-Requiem:2.6.2:dev") { transitive = false }
 
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:biomes-o-plenty-220318:2499612")
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:WailaHarvestability:1.2.1-GTNH:dev")
